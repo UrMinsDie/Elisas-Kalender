@@ -1,0 +1,27 @@
+
+  [32m[1mVITE[22m v5.4.21[39m  [2mready in [0m[1m206[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://127.0.0.1:[1m5175[22m/[39m
+[2m[32m  ➜[39m[22m[2m  press [22m[1mh + enter[22m[2m to show help[22m
+[2m23:12:09[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/LoginPage.tsx[22m
+[2m23:12:09[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/layouts/AppLayout.tsx[22m
+[2m23:12:09[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m23:16:24[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/PublicCalendarPage.tsx, /src/pages/RequestPage.tsx[22m
+[2m23:16:24[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/RequestPage.tsx[22m
+[2m23:16:24[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/RequestPage.tsx[22m
+[2m23:16:57[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/admin/AdminAppointmentsPage.tsx[22m
+[2m23:16:57[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/admin/AdminRequestsPage.tsx[22m
+[2m23:16:57[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m23:16:57[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/admin/AdminCalendarPage.tsx[22m
+[2m23:17:47[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/admin/AdminSettingsPage.tsx[22m
+[2m23:18:17[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/RequestPage.tsx[22m
+[2m23:23:43[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/PublicCalendarPage.tsx[22m
+[2m23:27:19[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/PublicCalendarPage.tsx, /src/pages/admin/AdminRequestsPage.tsx, /src/pages/admin/AdminCalendarPage.tsx, /src/pages/admin/AdminAppointmentsPage.tsx[22m
+[2m23:27:19[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/admin/AdminRequestsPage.tsx[22m
+[2m23:45:32[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/RequestPage.tsx[22m
+[2m23:45:32[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/RequestPage.tsx[22m
+[2m23:49:30[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/RequestPage.tsx[22m
+[2m23:51:27[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/PublicCalendarPage.tsx, /src/pages/RequestPage.tsx[22m
+[2m23:51:27[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/RequestPage.tsx[22m
+[2m23:57:21[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m23:57:21[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/PublicCalendarPage.tsx, /src/pages/admin/AdminRequestsPage.tsx, /src/pages/admin/AdminCalendarPage.tsx, /src/pages/admin/AdminAppointmentsPage.tsx[22m
