@@ -70,12 +70,11 @@ export function AdminRequestsPage() {
       {message && <p className="alert">{message}</p>}
       <div className="table-wrap">
         <table>
-          <thead><tr><th>Wer?</th><th>Kontakt</th><th>Wunsch</th><th>Nachricht</th><th>Zeitraum</th><th>Status</th><th>Aktionen</th></tr></thead>
+          <thead><tr><th>Wer?</th><th>Wunsch</th><th>Nachricht</th><th>Zeitraum</th><th>Status</th><th>Aktionen</th></tr></thead>
           <tbody>
             {items.map((item) => (
               <tr key={item.id}>
                 <td>{item.guest_name}</td>
-                <td>{item.guest_email}</td>
                 <td><strong>{item.activity_type}</strong><br />{item.title}</td>
                 <td>{item.description || '-'}</td>
                 <td>{new Date(item.start_at).toLocaleString('de-DE')}<br />bis {new Date(item.end_at).toLocaleString('de-DE')}</td>

@@ -11,7 +11,8 @@ language sql stable security definer set search_path = public as $$
       else 'busy'
     end,
     case
-      when a.entry_type = 'guest_request' and a.status = 'approved' then concat(a.title, ' - ', coalesce(a.guest_name, 'Gast'))
+      when a.entry_type = 'guest_request' and a.status = 'pending' then concat('Anfrage: ', coalesce(a.guest_name, 'Gast'), ' - ', coalesce(nullif(a.title, ''), a.activity_type))
+      when a.entry_type = 'guest_request' and a.status = 'approved' then concat(coalesce(nullif(a.title, ''), a.activity_type), ' - ', coalesce(a.guest_name, 'Gast'))
       when a.visibility = 'public_title' then a.title
       else null
     end

@@ -13,7 +13,7 @@ async function createBookingRequestDirectly(form: BookingFormData) {
 
   const { error } = await supabase.rpc('create_booking_request', {
     guest_name_text: form.guestName,
-    guest_email_text: form.guestEmail,
+    guest_email_text: '',
     activity_text: form.activityType,
     title_text: form.customTitle || form.activityType,
     description_text: form.description,

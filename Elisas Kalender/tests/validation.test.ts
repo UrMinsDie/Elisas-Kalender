@@ -1,12 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { hasOverlap, isValidEmail, publicTitleFor, validateBookingForm } from '../src/lib/validation';
+import { hasOverlap, publicTitleFor, validateBookingForm } from '../src/lib/validation';
 
 describe('validation', () => {
-  it('validates email addresses', () => {
-    expect(isValidEmail('test@example.com')).toBe(true);
-    expect(isValidEmail('kaputt@example')).toBe(false);
-  });
-
   it('detects date overlaps', () => {
     expect(hasOverlap(new Date('2026-07-11T10:30:00.000Z'), new Date('2026-07-11T11:30:00.000Z'), [
       { start_at: '2026-07-11T10:00:00.000Z', end_at: '2026-07-11T11:00:00.000Z' },
@@ -21,7 +16,6 @@ describe('validation', () => {
   it('rejects invalid form data and short durations', () => {
     const errors = validateBookingForm({
       guestName: '',
-      guestEmail: 'nope',
       activityType: 'Treffen',
       customTitle: '',
       description: '',
@@ -33,7 +27,6 @@ describe('validation', () => {
       website: '',
     });
     expect(errors.guestName).toBeTruthy();
-    expect(errors.guestEmail).toBeTruthy();
     expect(errors.endTime).toBeTruthy();
     expect(errors.privacyAccepted).toBeTruthy();
   });
@@ -41,7 +34,6 @@ describe('validation', () => {
   it('accepts multi-day booking ranges', () => {
     const errors = validateBookingForm({
       guestName: 'Nikita',
-      guestEmail: 'nikita@example.com',
       activityType: 'Treffen',
       customTitle: '',
       description: '',

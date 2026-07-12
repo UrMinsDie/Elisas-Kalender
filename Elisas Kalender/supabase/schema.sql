@@ -29,7 +29,7 @@ create table public.appointments (
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now(),
   constraint appointments_time_order check (end_at > start_at),
-  constraint guest_request_requires_guest check (entry_type <> 'guest_request' or (guest_name is not null and guest_email is not null))
+  constraint guest_request_requires_guest check (entry_type <> 'guest_request' or guest_name is not null)
 );
 
 create table public.availability_rules (
@@ -125,7 +125,8 @@ language sql stable security definer set search_path = public as $$
       else 'busy'
     end,
     case
-      when a.entry_type = 'guest_request' and a.status = 'approved' then concat(a.title, ' - ', coalesce(a.guest_name, 'Gast'))
+      when a.entry_type = 'guest_request' and a.status = 'pending' then concat('Anfrage: ', coalesce(a.guest_name, 'Gast'), ' - ', coalesce(nullif(a.title, ''), a.activity_type))
+      when a.entry_type = 'guest_request' and a.status = 'approved' then concat(coalesce(nullif(a.title, ''), a.activity_type), ' - ', coalesce(a.guest_name, 'Gast'))
       when a.visibility = 'public_title' then a.title
       else null
     end
@@ -152,7 +153,7 @@ begin
   if ends_at <= starts_at then raise exception 'invalid_range'; end if;
   if public.has_blocking_overlap(starts_at, ends_at, null) then raise exception 'overlap'; end if;
   insert into public.appointments (guest_name, guest_email, title, activity_type, description, start_at, end_at, status, entry_type, visibility)
-  values (left(guest_name_text, 120), left(guest_email_text, 180), left(title_text, 160), left(activity_text, 80), left(description_text, 1000), starts_at, ends_at, 'pending', 'guest_request', 'private')
+  values (left(guest_name_text, 120), nullif(left(trim(coalesce(guest_email_text, '')), 180), ''), left(title_text, 160), left(activity_text, 80), left(description_text, 1000), starts_at, ends_at, 'pending', 'guest_request', 'private')
   returning id into new_id;
   return new_id;
 end;

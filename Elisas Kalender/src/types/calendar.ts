@@ -30,7 +30,6 @@ export interface PublicCalendarEvent {
 
 export interface BookingFormData {
   guestName: string;
-  guestEmail: string;
   activityType: string;
   customTitle: string;
   description: string;

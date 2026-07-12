@@ -47,7 +47,7 @@ function toEditForm(item: Appointment): EditForm {
 
 function entrySummary(item: Appointment) {
   if (item.entry_type === 'guest_request') {
-    return `Gastanfrage von ${item.guest_name ?? 'unbekannt'} (${item.guest_email ?? 'keine E-Mail'})`;
+    return `Gastanfrage von ${item.guest_name ?? 'unbekannt'}`;
   }
   return item.entry_type === 'blocked_time' ? 'Blockierung' : 'Eigener Termin';
 }

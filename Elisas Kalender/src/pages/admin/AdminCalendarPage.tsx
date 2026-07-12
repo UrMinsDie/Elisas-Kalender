@@ -68,7 +68,7 @@ export function AdminCalendarPage() {
           {selected.entry_type === 'guest_request' && (
             <div className="guest-box">
               <strong>Anfrage von {selected.guest_name ?? 'unbekannt'}</strong>
-              <span>{selected.guest_email ?? 'Keine E-Mail angegeben'}</span>
+              <span>{selected.activity_type || selected.title}</span>
             </div>
           )}
           <p><strong>Titel:</strong> {selected.title}</p>

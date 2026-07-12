@@ -10,10 +10,6 @@ export const activities = [
   'Sonstiges',
 ];
 
-export function isValidEmail(email: string) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i.test(email.trim());
-}
-
 export function parseDateTime(date: string, time: string) {
   if (!date || !time) return null;
   const parsed = new Date(`${date}T${time}:00`);
@@ -42,7 +38,6 @@ export function validateBookingForm(data: BookingFormData) {
   const end = parseDateTime(data.endDate, data.endTime);
 
   if (!data.guestName.trim()) errors.guestName = 'Bitte gib deinen Namen ein.';
-  if (!isValidEmail(data.guestEmail)) errors.guestEmail = 'Bitte gib eine gültige E-Mail-Adresse ein.';
   if (!activities.includes(data.activityType)) errors.activityType = 'Bitte wähle eine Aktivität aus.';
   if (data.activityType === 'Sonstiges' && !data.customTitle.trim()) errors.customTitle = 'Bitte beschreibe die Aktivität kurz.';
   if (!data.startDate) errors.startDate = 'Bitte wähle ein Startdatum.';
