@@ -1,6 +1,7 @@
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { LogOut } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
+import { ThemeToggle } from '../components/ThemeToggle';
 
 const links = [
   ['/admin', 'Übersicht'],
@@ -21,6 +22,7 @@ export function AdminLayout() {
         {links.map(([href, label]) => (
           <Link key={href} className={pathname === href ? 'active' : ''} to={href}>{label}</Link>
         ))}
+        <ThemeToggle />
         <button type="button" className="ghost" onClick={signOut}><LogOut size={16} /> Abmelden</button>
       </aside>
       <section className="admin-content">

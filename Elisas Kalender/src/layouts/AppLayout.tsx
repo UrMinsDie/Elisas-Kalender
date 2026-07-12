@@ -1,6 +1,7 @@
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { ArrowLeft, CalendarDays, Lock } from 'lucide-react';
 import { EnvNotice } from '../components/EnvNotice';
+import { ThemeToggle } from '../components/ThemeToggle';
 
 export function AppLayout() {
   const navigate = useNavigate();
@@ -22,6 +23,7 @@ export function AppLayout() {
           <Link to="/calendar">Kalender</Link>
           <Link to="/request">Anfragen</Link>
           <Link className="admin-login-link" to="/login" aria-label="Elisa Login"><Lock size={18} /> Elisa Login</Link>
+          <ThemeToggle />
         </nav>
       </header>
       <EnvNotice />
