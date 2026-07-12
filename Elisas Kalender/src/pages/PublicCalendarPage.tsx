@@ -1,17 +1,30 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
-import interactionPlugin from '@fullcalendar/interaction';
 import deLocale from '@fullcalendar/core/locales/de';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { getPublicCalendarEvents } from '../services/calendarService';
 import { publicTitleFor } from '../lib/validation';
 import type { PublicCalendarEvent } from '../types/calendar';
 
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth < 720);
+
+  useEffect(() => {
+    function update() {
+      setIsMobile(window.innerWidth < 720);
+    }
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, []);
+
+  return isMobile;
+}
+
 export function PublicCalendarPage() {
-  const navigate = useNavigate();
+  const isMobile = useIsMobile();
   const [events, setEvents] = useState<PublicCalendarEvent[]>([]);
   const [error, setError] = useState('');
 
@@ -31,6 +44,7 @@ export function PublicCalendarPage() {
           <h1>Elisas Kalender</h1>
           <p>Freie Zeiten, vorläufige Anfragen und belegte Zeiträume auf einen Blick.</p>
         </div>
+        <Link className="button" to="/request">Treffen anfragen</Link>
       </header>
       {error && <p className="alert">{error}</p>}
       <div className="legend">
@@ -41,16 +55,20 @@ export function PublicCalendarPage() {
       </div>
       <div className="calendar-surface">
         <FullCalendar
-          plugins={[dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin]}
-          initialView="dayGridMonth"
+          plugins={[dayGridPlugin, timeGridPlugin, listPlugin]}
+          initialView={isMobile ? 'listWeek' : 'dayGridMonth'}
           locale={deLocale}
           timeZone="Europe/Berlin"
-          headerToolbar={{ left: 'prev,next today', center: 'title', right: 'dayGridMonth,timeGridWeek,listWeek' }}
+          headerToolbar={{
+            left: 'prev,next today',
+            center: 'title',
+            right: isMobile ? 'listWeek,timeGridDay' : 'dayGridMonth,timeGridWeek,listWeek',
+          }}
           buttonText={{ today: 'Heute', month: 'Monat', week: 'Woche', list: 'Liste' }}
           height="auto"
-          selectable
+          selectable={false}
+          dayMaxEvents={isMobile ? 2 : 4}
           datesSet={(info) => loadEvents(info.start, info.end)}
-          dateClick={(info) => navigate(`/request?date=${info.dateStr.slice(0, 10)}`)}
           events={events.map((event) => ({
             id: event.id,
             title: publicTitleFor(event),

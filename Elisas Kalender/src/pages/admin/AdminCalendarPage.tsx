@@ -17,7 +17,22 @@ function adminEventTitle(item: Appointment) {
   return item.title;
 }
 
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth < 720);
+
+  useEffect(() => {
+    function update() {
+      setIsMobile(window.innerWidth < 720);
+    }
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, []);
+
+  return isMobile;
+}
+
 export function AdminCalendarPage() {
+  const isMobile = useIsMobile();
   const [items, setItems] = useState<Appointment[]>([]);
   const [selected, setSelected] = useState<Appointment | null>(null);
 
@@ -31,12 +46,17 @@ export function AdminCalendarPage() {
       <div className="calendar-surface">
         <FullCalendar
           plugins={[dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin]}
-          initialView="timeGridWeek"
+          initialView={isMobile ? 'listWeek' : 'timeGridWeek'}
           locale={deLocale}
           timeZone="Europe/Berlin"
           height="auto"
           editable
-          headerToolbar={{ left: 'prev,next today', center: 'title', right: 'dayGridMonth,timeGridWeek,listWeek' }}
+          headerToolbar={{
+            left: 'prev,next today',
+            center: 'title',
+            right: isMobile ? 'listWeek,timeGridDay' : 'dayGridMonth,timeGridWeek,listWeek',
+          }}
+          buttonText={{ today: 'Heute', month: 'Monat', week: 'Woche', list: 'Liste', day: 'Tag' }}
           events={items.map((item) => ({ id: item.id, title: adminEventTitle(item), start: item.start_at, end: item.end_at, className: `admin-${item.status} ${item.entry_type}` }))}
           eventClick={(info) => setSelected(items.find((item) => item.id === info.event.id) ?? null)}
         />

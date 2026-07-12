@@ -71,6 +71,7 @@ button:disabled { opacity: .6; cursor: progress; }
 .narrow { max-width: 720px; }
 .page-head { display: flex; justify-content: space-between; align-items: end; gap: 1rem; }
 .calendar-surface, .form, .detail-panel, .stats article, .table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; box-shadow: var(--shadow); }
+.calendar-surface { overflow: hidden; }
 .legend { display: flex; flex-wrap: wrap; gap: .8rem; margin: 1rem 0; color: var(--muted); }
 .dot { width: .8rem; height: .8rem; display: inline-block; border-radius: 999px; margin-right: .3rem; }
 .free { background: var(--free); } .pending { background: var(--pending); } .busy { background: var(--busy); } .blocked { background: var(--blocked); }
@@ -81,6 +82,8 @@ button:disabled { opacity: .6; cursor: progress; }
 :root[data-theme="dark"] .event-busy,
 :root[data-theme="dark"] .event-blocked { color: #f8fafc !important; }
 .fc { --fc-border-color: var(--border); --fc-page-bg-color: var(--surface); --fc-neutral-bg-color: var(--surface-soft); --fc-list-event-hover-bg-color: var(--surface-soft); }
+.fc .fc-toolbar { gap: .75rem; }
+.fc .fc-toolbar-title { line-height: 1.1; }
 .fc .fc-button-primary { background: #17314a; border-color: #17314a; }
 .fc .fc-button-primary:not(:disabled).fc-button-active,
 .fc .fc-button-primary:not(:disabled):active { background: var(--primary); border-color: var(--primary); }
@@ -197,6 +200,15 @@ th, td { text-align: left; border-bottom: 1px solid #e5e7eb; padding: .7rem; ver
   .fc .fc-toolbar { flex-direction: column; gap: .6rem; }
   .fc .fc-toolbar-title { font-size: 1.35rem; }
   .fc .fc-button { padding: .45rem .55rem; }
+  .fc .fc-header-toolbar { margin-bottom: .75rem; }
+  .fc .fc-toolbar-chunk { display: flex; justify-content: center; width: 100%; }
+  .fc .fc-button-group { width: 100%; }
+  .fc .fc-button-group .fc-button { flex: 1 1 0; }
+  .fc .fc-list { border-radius: 8px; overflow: hidden; }
+  .fc .fc-list-day-cushion,
+  .fc .fc-list-event td { padding: .7rem .55rem; }
+  .fc .fc-list-event-title { white-space: normal; line-height: 1.35; }
+  .fc .fc-list-event-time { min-width: 72px; white-space: normal; }
   .fc-daygrid-day-frame { min-height: 74px; }
   .form, .settings-section, .table-wrap { padding: .85rem; }
   .row-actions { flex-wrap: wrap; align-items: stretch; }
