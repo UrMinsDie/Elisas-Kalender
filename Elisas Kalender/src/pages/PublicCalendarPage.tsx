@@ -62,7 +62,7 @@ export function PublicCalendarPage() {
           headerToolbar={{
             left: 'prev,next today',
             center: 'title',
-            right: isMobile ? 'listWeek,timeGridDay' : 'dayGridMonth,timeGridWeek,listWeek',
+            right: isMobile ? 'listWeek,dayGridMonth,timeGridDay' : 'dayGridMonth,timeGridWeek,listWeek',
           }}
           buttonText={{ today: 'Heute', month: 'Monat', week: 'Woche', list: 'Liste' }}
           height="auto"

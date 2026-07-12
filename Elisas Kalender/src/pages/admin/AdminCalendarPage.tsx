@@ -54,7 +54,7 @@ export function AdminCalendarPage() {
           headerToolbar={{
             left: 'prev,next today',
             center: 'title',
-            right: isMobile ? 'listWeek,timeGridDay' : 'dayGridMonth,timeGridWeek,listWeek',
+            right: isMobile ? 'listWeek,dayGridMonth,timeGridDay' : 'dayGridMonth,timeGridWeek,listWeek',
           }}
           buttonText={{ today: 'Heute', month: 'Monat', week: 'Woche', list: 'Liste', day: 'Tag' }}
           events={items.map((item) => ({ id: item.id, title: adminEventTitle(item), start: item.start_at, end: item.end_at, className: `admin-${item.status} ${item.entry_type}` }))}
