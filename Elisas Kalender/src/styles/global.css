@@ -210,6 +210,46 @@ th, td { text-align: left; border-bottom: 1px solid #e5e7eb; padding: .7rem; ver
   .fc .fc-list-event-title { white-space: normal; line-height: 1.35; }
   .fc .fc-list-event-time { min-width: 72px; white-space: normal; }
   .fc-daygrid-day-frame { min-height: 74px; }
+  .fc-dayGridMonth-view .fc-scrollgrid,
+  .fc-dayGridMonth-view table {
+    width: 100% !important;
+    min-width: 0 !important;
+    table-layout: fixed !important;
+  }
+  .fc-dayGridMonth-view th,
+  .fc-dayGridMonth-view td {
+    padding: 0;
+  }
+  .fc-dayGridMonth-view .fc-col-header-cell-cushion {
+    display: block;
+    padding: .35rem 0;
+    font-size: .72rem;
+  }
+  .fc-dayGridMonth-view .fc-daygrid-day-number {
+    padding: .25rem;
+    font-size: .78rem;
+  }
+  .fc-dayGridMonth-view .fc-daygrid-day-frame {
+    min-height: 58px;
+  }
+  .fc-dayGridMonth-view .fc-daygrid-day-events {
+    margin: 0 1px;
+  }
+  .fc-dayGridMonth-view .fc-daygrid-event {
+    border-radius: 5px;
+    margin: 1px 0;
+    padding: 0 1px;
+    font-size: .62rem;
+    line-height: 1.15;
+  }
+  .fc-dayGridMonth-view .fc-event-time {
+    display: none;
+  }
+  .fc-dayGridMonth-view .fc-event-title {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   .form, .settings-section, .table-wrap { padding: .85rem; }
   .row-actions { flex-wrap: wrap; align-items: stretch; }
   .row-actions button { flex: 1 1 130px; justify-content: center; }
