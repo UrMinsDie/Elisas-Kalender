@@ -2,6 +2,19 @@ export type AppointmentStatus = 'pending' | 'approved' | 'rejected' | 'cancelled
 export type EntryType = 'guest_request' | 'admin_appointment' | 'blocked_time';
 export type Visibility = 'busy_only' | 'public_title' | 'private';
 
+export const appointmentStatusLabels: Record<AppointmentStatus, string> = {
+  pending: 'Offen',
+  approved: 'Angenommen',
+  rejected: 'Abgelehnt',
+  cancelled: 'Storniert',
+};
+
+export const visibilityLabels: Record<Visibility, string> = {
+  busy_only: 'Nur belegt',
+  public_title: 'Öffentlicher Titel',
+  private: 'Privat',
+};
+
 export interface Appointment {
   id: string;
   guest_name: string | null;

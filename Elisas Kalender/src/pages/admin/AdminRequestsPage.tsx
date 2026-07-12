@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { deleteAppointment, getAdminAppointments, updateAppointmentStatus } from '../../services/calendarService';
+import { appointmentStatusLabels } from '../../types/calendar';
 import type { Appointment } from '../../types/calendar';
 
 function formatRange(item: Appointment) {
@@ -78,7 +79,7 @@ export function AdminRequestsPage() {
                 <td><strong>{item.activity_type}</strong><br />{item.title}</td>
                 <td>{item.description || '-'}</td>
                 <td>{new Date(item.start_at).toLocaleString('de-DE')}<br />bis {new Date(item.end_at).toLocaleString('de-DE')}</td>
-                <td>{item.status}</td>
+                <td>{appointmentStatusLabels[item.status]}</td>
                 <td className="row-actions">
                   <button onClick={() => decide(item.id, 'approved')}>Annehmen</button>
                   <button onClick={() => decide(item.id, 'rejected')}>Ablehnen</button>

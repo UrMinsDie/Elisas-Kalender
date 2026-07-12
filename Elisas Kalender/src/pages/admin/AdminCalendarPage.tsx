@@ -6,6 +6,7 @@ import listPlugin from '@fullcalendar/list';
 import interactionPlugin from '@fullcalendar/interaction';
 import deLocale from '@fullcalendar/core/locales/de';
 import { getAdminAppointments } from '../../services/calendarService';
+import { appointmentStatusLabels, visibilityLabels } from '../../types/calendar';
 import type { Appointment } from '../../types/calendar';
 
 function adminEventTitle(item: Appointment) {
@@ -75,7 +76,7 @@ export function AdminCalendarPage() {
           <p><strong>Aktivität:</strong> {selected.activity_type}</p>
           <p><strong>Zeitraum:</strong> {new Date(selected.start_at).toLocaleString('de-DE')} bis {new Date(selected.end_at).toLocaleString('de-DE')}</p>
           <p><strong>Nachricht:</strong> {selected.description ?? '-'}</p>
-          <p><strong>Status:</strong> {selected.status} | <strong>Sichtbarkeit:</strong> {selected.visibility}</p>
+          <p><strong>Status:</strong> {appointmentStatusLabels[selected.status]} | <strong>Sichtbarkeit:</strong> {visibilityLabels[selected.visibility]}</p>
           <p><strong>Interne Notiz:</strong> {selected.admin_note ?? '-'}</p>
           <p><strong>Ablehnungsgrund:</strong> {selected.rejection_reason ?? '-'}</p>
         </section>

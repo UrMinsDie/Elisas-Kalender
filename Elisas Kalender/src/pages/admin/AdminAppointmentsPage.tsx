@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '../../lib/supabase';
 import { deleteAppointment, getAdminAppointments, updateAppointment } from '../../services/calendarService';
+import { appointmentStatusLabels } from '../../types/calendar';
 import type { Appointment, AppointmentStatus, EntryType, Visibility } from '../../types/calendar';
 
 interface EditForm {
@@ -171,7 +172,7 @@ export function AdminAppointmentsPage() {
               <div>
                 <strong>{item.entry_type === 'guest_request' ? `${item.guest_name ?? 'Unbekannter Gast'}: ${item.activity_type}` : item.title}</strong>
                 <span>{new Date(item.start_at).toLocaleString('de-DE')} bis {new Date(item.end_at).toLocaleString('de-DE')}</span>
-                <span>{entrySummary(item)} · {item.status}</span>
+                <span>{entrySummary(item)} · {appointmentStatusLabels[item.status]}</span>
                 {item.description && <span>Nachricht: {item.description}</span>}
               </div>
               <div className="row-actions">
