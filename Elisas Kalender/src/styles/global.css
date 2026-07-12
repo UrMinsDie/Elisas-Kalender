@@ -97,14 +97,14 @@ button:disabled { opacity: .6; cursor: progress; }
   vertical-align: top;
   white-space: nowrap;
 }
-.fc-daygrid-event:hover .fc-event-title,
-.fc-daygrid-event:focus-within .fc-event-title {
+.fc-dayGridMonth-view .fc-daygrid-event:hover .fc-event-title,
+.fc-dayGridMonth-view .fc-daygrid-event:focus-within .fc-event-title {
   min-width: max-content;
-  animation: calendar-title-marquee 7s linear infinite;
+  animation: calendar-title-marquee 8s linear infinite;
 }
 @keyframes calendar-title-marquee {
-  0%, 12% { transform: translateX(0); }
-  88%, 100% { transform: translateX(calc(-100% + 120px)); }
+  0%, 10% { transform: translateX(100%); }
+  90%, 100% { transform: translateX(calc(-100% - 12px)); }
 }
 
 .form { display: grid; gap: 1rem; }
@@ -249,6 +249,11 @@ th, td { text-align: left; border-bottom: 1px solid #e5e7eb; padding: .7rem; ver
     max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+  .fc-dayGridMonth-view .fc-daygrid-event:hover .fc-event-title,
+  .fc-dayGridMonth-view .fc-daygrid-event:focus-within .fc-event-title {
+    min-width: 0;
+    animation: none;
   }
   .form, .settings-section, .table-wrap { padding: .85rem; }
   .row-actions { flex-wrap: wrap; align-items: stretch; }
